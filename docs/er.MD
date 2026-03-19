@@ -61,20 +61,6 @@ erDiagram
     }
 
     %% ════════════════════════════════════════════
-    %% STUDENT PROGRESS LAYER
-    %% ════════════════════════════════════════════
-
-    LEARNING_PATH {
-        int         path_id             PK  "รหัสเส้นทางการเรียน"
-        int         student_id          FK  "FK → STUDENT"
-        int         course_id           FK  "FK → COURSE"
-        date        started_at              "วันที่เริ่มเรียน"
-        date        completed_at            "วันที่จบ/ผ่านหลักสูตร"
-        enum        status                  "enrolled | completed | dropped"
-        text        instructor_notes
-    }
-
-    %% ════════════════════════════════════════════
     %% CONTACT & INTERACTION LAYER
     %% ════════════════════════════════════════════
 
@@ -97,24 +83,6 @@ erDiagram
         varchar     ads_id                  "Facebook Ads ID"
     }
 
-    %% ════════════════════════════════════════════
-    %% PURCHASE LAYER
-    %% ════════════════════════════════════════════
-
-    PURCHASE {
-        int         purchase_id         PK  "รหัสการซื้อ"
-        int         session_id          FK  "FK → CONTACT_SESSION (รอบที่ซื้อ)"
-        int         student_id          FK  "FK → STUDENT (นักเรียนที่ซื้อให้)"
-        int         course_id           FK  "FK → COURSE"
-        date        purchased_at            "วันที่ซื้อ"
-        decimal     amount_paid             "ราคาที่ชำระจริง"
-        enum        payment_status          "deposit | paid"
-        varchar     receipt_ref             "เลขอ้างอิงการชำระ"
-    }
-
-    %% ════════════════════════════════════════════
-    %% RELATIONSHIPS
-    %% ════════════════════════════════════════════
 
     PARENT            ||--o{ SOCIAL_ACCOUNT    : "มีบัญชี Social ได้หลายช่องทาง"
     PARENT            ||--o{ PARENT_STUDENT    : "มีลูกได้หลายคน"
