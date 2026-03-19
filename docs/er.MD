@@ -30,19 +30,6 @@ erDiagram
         varchar     platform_user_id         "Username หรือ UID"
     }
 
-    STUDENT {
-        int         student_id          PK  "รหัสนักเรียน"
-        varchar     first_name              "ชื่อ"
-        varchar     last_name               "นามสกุล"
-        varchar     nickname                "ชื่อเล่น"
-        enum        gender                  "M | F | Other"
-        date        birth_date              "วันเกิด (คำนวณอายุได้)"
-        enum        experience              "Never | Little | Ever"
-        text        notes                   "Note เพิ่มเติม"
-        timestamp   created_at
-        timestamp   updated_at
-    }
-
     PARENT_STUDENT {
         int         internal_id         PK  "FK → PARENT"
         int         student_id          PK  "FK → STUDENT"
@@ -76,7 +63,6 @@ erDiagram
 
     PARENT            ||--o{ SOCIAL_ACCOUNT    : "มีบัญชี Social ได้หลายช่องทาง"
     PARENT            ||--o{ PARENT_STUDENT    : "มีลูกได้หลายคน"
-    STUDENT           ||--o{ PARENT_STUDENT    : "มีผู้ปกครองได้หลายคน"
     PARENT            ||--o{ CONTACT_SESSION   : "ติดต่อเข้ามาหลายครั้ง"
     SOCIAL_ACCOUNT    ||--o{ CONTACT_SESSION   : "ใช้บัญชีนี้ติดต่อ"
     CONTACT_SESSION   ||--o{ ADS_INTERACTION   : "มาจาก Ads หลายตัว"
