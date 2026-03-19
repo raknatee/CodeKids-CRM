@@ -49,16 +49,6 @@ erDiagram
         varchar     relationship            "พ่อ | แม่ | ผู้ปกครอง | อื่นๆ"
     }
 
-    %% ════════════════════════════════════════════
-    %% COURSE CATALOGUE LAYER
-    %% ════════════════════════════════════════════
-
-    COURSE {
-        int         course_id           PK  "รหัสหลักสูตร"
-        varchar     course_name             "ชื่อหลักสูตร"
-        text        description
-        decimal     price                   "ราคาปกติ"
-    }
 
     %% ════════════════════════════════════════════
     %% CONTACT & INTERACTION LAYER
@@ -90,10 +80,5 @@ erDiagram
     PARENT            ||--o{ CONTACT_SESSION   : "ติดต่อเข้ามาหลายครั้ง"
     SOCIAL_ACCOUNT    ||--o{ CONTACT_SESSION   : "ใช้บัญชีนี้ติดต่อ"
     CONTACT_SESSION   ||--o{ ADS_INTERACTION   : "มาจาก Ads หลายตัว"
-    CONTACT_SESSION   ||--o{ PURCHASE          : "เกิดการซื้อในรอบนี้"
-    STUDENT           ||--o{ PURCHASE          : "นักเรียนที่ถูกซื้อให้"
-    COURSE            ||--o{ PURCHASE          : "หลักสูตรที่ซื้อ"
-    STUDENT           ||--o{ LEARNING_PATH     : "เส้นทางการเรียนของนักเรียน"
-    COURSE            ||--o{ LEARNING_PATH     : "หลักสูตรในเส้นทาง"
     
 ```
