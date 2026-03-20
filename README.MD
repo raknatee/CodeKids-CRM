@@ -1,1 +1,0 @@
-https://github.com/raknatee/CodeKids-CRM/blob/5-docs-er/docs/main.MD
