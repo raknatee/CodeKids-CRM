@@ -1,0 +1,35 @@
+ 
+
+services:
+  
+
+  backend:
+    build:
+      context: ../../backend
+      dockerfile: prod.Dockerfile
+      platforms:
+        - linux/amd64
+
+    image: "**CONTAINER_REGISTRY**/codekids/backend:**BACKEND_TAG**"
+
+
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.backend.rule=PathPrefix(`/backend`) && Host(`**DOMAIN**`)"
+      - "traefik.http.routers.backend.service=backend"
+      - "traefik.http.routers.backend.entrypoints=websecure"
+      - "traefik.http.routers.backend.tls.certresolver=myresolver"
+      - "traefik.http.services.backend.loadbalancer.server.port=8000"
+      - "traefik.http.routers.backend.middlewares=secure-header"
+
+
+    secrets:
+      - mongo_db_user.txt
+      - mongo_db_password.txt
+
+secrets:
+  mongo_db_user.txt:
+    external: true
+  mongo_db_password.txt:
+    external: true
+

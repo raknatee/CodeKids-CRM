@@ -1,0 +1,34 @@
+services:
+  coredb:
+    build:
+      context: ../../db
+      dockerfile: Dockerfile
+      platforms:
+        - linux/amd64
+
+    image: "**CONTAINER_REGISTRY**/codekids/coredb:1.0.5"
+    environment:
+        MONGO_INITDB_ROOT_USERNAME_FILE: /run/secrets/mongo_db_user.txt
+        MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongo_db_password.txt
+
+    secrets:
+      - mongo_db_user.txt
+      - mongo_db_password.txt
+
+    ports:
+      - "27017:27017"
+    volumes:
+      - coredb_data:/data/db
+
+
+volumes:
+  coredb_data:
+
+
+secrets:
+  mongo_db_user.txt:
+    external: true
+  mongo_db_password.txt:
+    external: true
+
+

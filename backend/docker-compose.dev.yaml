@@ -1,0 +1,35 @@
+ 
+
+services:
+  
+
+  backend:
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+      platforms:
+        - linux/amd64
+
+    volumes:
+      - ./container:/container
+      - /container/.venv
+      - ../.vscode-server/backend:/root/.vscode-server
+
+    
+    labels:
+      - traefik.enable=true
+      # - traefik.http.routers.backend.rule=PathPrefix(`/backend`) && (Host(`codekids.localhost`)|| Host(`localhost`))
+      - traefik.http.routers.backend.rule=PathPrefix(`/api/backend`)
+      - traefik.http.routers.backend.service=backend
+      - traefik.http.routers.backend.entrypoints=web
+      - traefik.http.services.backend.loadbalancer.server.port=8000
+
+
+    secrets:
+      - mongo_db_user.txt
+      - mongo_db_password.txt
+    #   - email_app_password.json
+
+
+
+

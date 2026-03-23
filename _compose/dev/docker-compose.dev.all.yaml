@@ -1,0 +1,11 @@
+include:
+  - ../../db/docker-compose.dev.yaml
+  - ../../backend/docker-compose.dev.yaml
+  - ../../traefik/docker-compose.dev.yaml
+
+secrets:
+  mongo_db_user.txt:
+    file: ${PWD}/secret/dev/mongo_db_user.txt
+  mongo_db_password.txt:
+    file: ${PWD}/secret/dev/mongo_db_password.txt
+  
