@@ -50,6 +50,7 @@ erDiagram
         varchar     followup_tag            "ป้ายกำกับการติดตาม เช่น 2nd TPH"
         enum        requirement             "online | trial | camp | other"
         enum        contact_type            " Inbound-Ads | Inbound-Organic | Outbound-Followup"
+        text        insight                 "เป้าหมาย หรือ ข้อมูลเชิงลึกในการคุยครั้งนี้"
         text        session_notes           "Note ของรอบการติดต่อนี้"
         timestamp   updated_at
     }
@@ -58,6 +59,7 @@ erDiagram
         int         ads_interaction_id  PK  "รหัส Ads Interaction"
         int         session_id          FK  "FK → CONTACT_SESSION"
         varchar     ads_id                  "Facebook Ads ID"
+        string      platform_name
     }
 
 
