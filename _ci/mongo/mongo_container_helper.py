@@ -27,7 +27,7 @@ def setup()->None:
             print(stdout)
             print(stderr)
             print(f"{returncode}")
-            if returncode == 0 or stderr.strip() == "MongoServerError: already initialized":    
+            if returncode == 0 or "MongoServerError: already initialized" in stderr:    
                 break
             sleep(2)
 
