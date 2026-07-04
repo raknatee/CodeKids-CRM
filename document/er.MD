@@ -6,10 +6,12 @@ erDiagram
     %% CORE IDENTITY LAYER
     %% ════════════════════════════════════════════
 
-    PARENT {
-        int         internal_id         PK  "Internal ID (ตัวระบุเอกลักษณ์ภายใน)"
+    Customer {
+        int         uid         PK  "Internal ID (ตัวระบุเอกลักษณ์ภายใน)"
+        varchar     codekids_id             "CodeKids' ID"
         varchar     first_name              "ชื่อ"
         varchar     last_name               "นามสกุล"
+        datetime    dob                     "วันเกิด"
         varchar     email                   "อีเมล"
         varchar     phone                   "เบอร์โทรศัพท์"
         varchar     district                "แขวง/ตำบล"
@@ -30,9 +32,9 @@ erDiagram
         varchar     platform_user_id         "Username หรือ UID"
     }
 
-    PARENT_STUDENT {
-        int         internal_id         PK  "FK → PARENT"
-        int         student_id          PK  "FK → STUDENT"
+    CUSTOMER_RELATIONSHIP {
+        int         uid         PK  "FK → PARENT"
+        int         uid          PK  "FK → STUDENT"
         varchar     relationship            "พ่อ | แม่ | ผู้ปกครอง | อื่นๆ"
     }
 
