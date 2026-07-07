@@ -17,3 +17,8 @@ def start_endpoint()->None:
 def stop_endpoint()->None:
     compose_path = "./_compose/dev/docker-compose.dev.all.yaml"
     DevHandler(compose_path, DEV_PROJECT_NAME).stop()
+    
+@dev_router.command("use")
+def use_endpoint(cmd: str)->None:
+    compose_path = "./_compose/dev/docker-compose.dev.all.yaml"
+    DevHandler(compose_path, DEV_PROJECT_NAME).use_docker(cmd)

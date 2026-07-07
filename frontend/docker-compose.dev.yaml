@@ -1,0 +1,19 @@
+services:
+  frontend:
+    build: 
+      context: .
+      dockerfile: dev.Dockerfile
+      platforms:
+        - linux/amd64
+
+    volumes:
+      - ./container:/container
+      - /container/node_modules
+      - ./.vscode-server/frontend:/root/.vscode-server
+
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.frontend.loadBalancer.server.port=80
+      - traefik.http.routers.frontend.rule=PathPrefix(`/`)
+      - traefik.http.routers.frontend.service=frontend@docker
+      - traefik.http.routers.frontend.entrypoints=web
