@@ -2,6 +2,7 @@ include:
   - ../../db/docker-compose.dev.yaml
   - ../../backend/docker-compose.dev.yaml
   - ../../traefik/docker-compose.dev.yaml
+  - ../../frontend/docker-compose.dev.yaml
 
 secrets:
   mongo_db_user.txt:
