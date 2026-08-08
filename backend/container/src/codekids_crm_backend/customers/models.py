@@ -1,5 +1,6 @@
 from datetime import datetime
 from enum import StrEnum
+from typing import TypedDict
 
 
 class LeadStatus(StrEnum):
@@ -14,14 +15,7 @@ class Experience(StrEnum):
     NEVER = "NEVER"
 
 
-class WhyCodekids(StrEnum):
-    ADS = "ADS"
-    TIKTOK = "TIKTOK"
-    COMMENT_RESPONSE = "COMMENT_RESPONSE"
-    WORD_OF_MOUTH = "WORD_OF_MOUTH"
-
-
-class CustomerModel:
+class CustomerModel(TypedDict):
     """
     - `_id`: ObjectId ที่ Mongo gen ให้อัตโนมัติ (primary key จริงของ document)
     - `uid`: int อ้างอิงภายใน gen เองแบบ auto-increment (ผ่าน counters collection)
@@ -43,5 +37,5 @@ class CustomerModel:
     lead_status: LeadStatus
     experience: Experience | None
     notes: str | None
-    why_codekids: WhyCodekids | None
+    why_codekids: str | None
     updated_at: datetime
