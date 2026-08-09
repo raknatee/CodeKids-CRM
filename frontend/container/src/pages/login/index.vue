@@ -29,38 +29,7 @@
         Sign in to CodeKids CRM
       </h1>
 
-      <button
-        type="button"
-        :disabled="isLoading"
-        :style="{
-          width: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.75rem',
-          borderRadius: '0.75rem',
-          border: 'none',
-          backgroundColor: isHovering ? '#1f2937' : '#000000',
-          padding: '0.875rem 1.25rem',
-          color: '#ffffff',
-          fontWeight: 600,
-          fontSize: '1rem',
-          cursor: isLoading ? 'not-allowed' : 'pointer',
-          opacity: isLoading ? 0.6 : 1,
-          transition: 'background-color 0.15s ease',
-        }"
-        @click="handleGoogleLogin"
-        @mouseenter="isHovering = true"
-        @mouseleave="isHovering = false"
-      >
-        <img
-          src="../../assets/img/google-color-svgrepo-com.svg"
-          alt="Google"
-          style="height: 1.25rem; width: 1.25rem"
-        />
-        <span style="flex: 1; text-align: center">
-          {{ isLoading ? "Signing in..." : "Continue with Google" }}
-        </span>
-      </button>
+      <GoogleSignIn :loading="isLoading" @click="handleGoogleLogin" />
 
       <div
         style="
@@ -89,10 +58,10 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import GoogleSignIn from "./components/google-sign-in/index.vue";
 
 const isLoading = ref(false);
 const errorMessage = ref("");
-const isHovering = ref(false);
 
 async function handleGoogleLogin(): Promise<void> {
   errorMessage.value = "";
