@@ -22,7 +22,7 @@ class CustomerModel(TypedDict):
       ใช้เป็นรหัสที่ entity อื่น (SocialAccount, ContactSession ฯลฯ) จะมาอ้างอิงในอนาคต
     """
 
-    uid: int
+    uid: str
     codekids_id: str | None
     first_name: str | None
     last_name: str | None
