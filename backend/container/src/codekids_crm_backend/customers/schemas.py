@@ -26,30 +26,15 @@ class CustomerCreate(BaseModel):
 
 
 class CustomerReplace(CustomerCreate):
-    """ใช้กับ PUT (แทนที่ข้อมูลทั้งก้อน) โครงสร้างเหมือน Create ทุกประการ"""
+    """ใช้กับ PUT (แทนที่ข้อมูลทั้งก้อน) โครงสร้างเหมือน Create ทุกประการ — ไม่ต้องเขียน field ซ้ำ"""
 
 
-class CustomerOut(BaseModel):
-    """Response ที่ส่งกลับให้ client"""
+class CustomerOut(CustomerCreate):
+    """Response ที่ส่งกลับ client และเป็นรูปแบบที่เก็บลง Mongo — เหมือน Create ทุกอย่าง บวก uid/updated_at ที่ server generate เอง"""
 
     model_config = ConfigDict(from_attributes=True)
 
     uid: str
-    codekids_id: str | None
-    first_name: str | None
-    last_name: str | None
-    nickname: str | None
-    dob: datetime | None
-    email: str | None
-    phone: str | None
-    district: str | None
-    city: str | None
-    education: str | None
-    workplace: str | None
-    lead_status: LeadStatus
-    experience: Experience | None
-    notes: str | None
-    why_codekids: str | None
     updated_at: datetime
 
 
