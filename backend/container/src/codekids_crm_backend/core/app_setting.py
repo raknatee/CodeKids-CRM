@@ -1,2 +1,2 @@
 
-BASE_PATH: str = "/api"
+BASE_PATH: str = "/api/backend"
