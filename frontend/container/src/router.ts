@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+<<<<<<< HEAD
 import Home from "./pages/Home.vue";
 import About from "./pages/about.vue";
 import Customer from "./pages/customer/index.vue";
@@ -10,8 +11,9 @@ export const router = createRouter({
     { path: "/about", name: "about", component: About },
     { path: "/customer", name: "customer", component: Customer },
   ],
+=======
+>>>>>>> f230285 (chore: router)
 import ContactSession from "./pages/contact-session/index.vue";
-import { createRouter, createWebHistory } from 'vue-router'
 
 
 
