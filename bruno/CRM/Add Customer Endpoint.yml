@@ -1,0 +1,170 @@
+info:
+  name: Add Customer Endpoint
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/backend/customer"
+  body:
+    type: json
+    data: |-
+      {
+        "codekids_id": "",
+        "first_name": "{{customer_firstname}}",
+        "last_name": "{{customer_lastname}}",
+        "nickname": "",
+        "dob": "2026-08-24T08:26:37.964Z",
+        "email": "",
+        "phone": "",
+        "district": "",
+        "city": "",
+        "education": "",
+        "workplace": "",
+        "lead_status": "NEW_LEAD",
+        "experience": null,
+        "notes": "",
+        "why_codekids": ""
+      }
+  auth: inherit
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 201 Response
+    description: Successful Response
+    request:
+      url: "{{baseUrl}}/api/backend/customer"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "codekids_id": "",
+            "first_name": "",
+            "last_name": "",
+            "nickname": "",
+            "dob": "",
+            "email": "",
+            "phone": "",
+            "district": "",
+            "city": "",
+            "education": "",
+            "workplace": "",
+            "lead_status": "NEW_LEAD",
+            "experience": "",
+            "notes": "",
+            "why_codekids": ""
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "codekids_id": "",
+            "first_name": "",
+            "last_name": "",
+            "nickname": "",
+            "dob": "",
+            "email": "",
+            "phone": "",
+            "district": "",
+            "city": "",
+            "education": "",
+            "workplace": "",
+            "lead_status": "NEW_LEAD",
+            "experience": "",
+            "notes": "",
+            "why_codekids": "",
+            "uid": "",
+            "updated_at": ""
+          }
+  - name: 422 Response
+    description: Validation Error
+    request:
+      url: "{{baseUrl}}/api/backend/customer"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "codekids_id": "",
+            "first_name": "",
+            "last_name": "",
+            "nickname": "",
+            "dob": "",
+            "email": "",
+            "phone": "",
+            "district": "",
+            "city": "",
+            "education": "",
+            "workplace": "",
+            "lead_status": "NEW_LEAD",
+            "experience": "",
+            "notes": "",
+            "why_codekids": ""
+          }
+    response:
+      status: 422
+      statusText: Unprocessable Entity
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "detail": [
+              {
+                "loc": [],
+                "msg": "",
+                "type": "",
+                "input": "",
+                "ctx": {}
+              }
+            ]
+          }
+  - name: Watcharaporn
+    request:
+      url: "{{baseUrl}}/api/backend/customer"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "codekids_id": "",
+            "first_name": "{{customer_firstname}}",
+            "last_name": "{{customer_lastname}}",
+            "nickname": "",
+            "dob": "2026-08-24T08:26:37.964Z",
+            "email": "",
+            "phone": "",
+            "district": "",
+            "city": "",
+            "education": "",
+            "workplace": "",
+            "lead_status": "NEW_LEAD",
+            "experience": null,
+            "notes": "",
+            "why_codekids": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      body:
+        type: text
+        data: ""

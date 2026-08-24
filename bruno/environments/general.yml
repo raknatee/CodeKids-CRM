@@ -1,0 +1,8 @@
+name: general
+variables:
+  - name: customer_firstname
+    value: Watcharaporn
+    description: ""
+  - name: customer_lastname
+    value: Donsang
+    description: ""
