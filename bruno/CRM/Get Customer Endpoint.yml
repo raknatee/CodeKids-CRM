@@ -1,0 +1,92 @@
+info:
+  name: Get Customer Endpoint
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/backend/customer?uid=e4e5504b-c2f9-4699-ac07-098fd48c08dd"
+  params:
+    - name: uid
+      value: e4e5504b-c2f9-4699-ac07-098fd48c08dd
+      type: query
+  auth: inherit
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Successful Response
+    request:
+      url: "{{baseUrl}}/api/backend/customer"
+      method: GET
+      params:
+        - name: uid
+          value: ""
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "codekids_id": "",
+            "first_name": "",
+            "last_name": "",
+            "nickname": "",
+            "dob": "",
+            "email": "",
+            "phone": "",
+            "district": "",
+            "city": "",
+            "education": "",
+            "workplace": "",
+            "lead_status": "NEW_LEAD",
+            "experience": "",
+            "notes": "",
+            "why_codekids": "",
+            "uid": "",
+            "updated_at": ""
+          }
+  - name: 422 Response
+    description: Validation Error
+    request:
+      url: "{{baseUrl}}/api/backend/customer"
+      method: GET
+      params:
+        - name: uid
+          value: ""
+          type: query
+    response:
+      status: 422
+      statusText: Unprocessable Entity
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "detail": [
+              {
+                "loc": [],
+                "msg": "",
+                "type": "",
+                "input": "",
+                "ctx": {}
+              }
+            ]
+          }
