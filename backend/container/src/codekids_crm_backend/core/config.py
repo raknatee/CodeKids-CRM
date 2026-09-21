@@ -23,6 +23,11 @@ class Settings:
     mongo_user: str | None = _read_secret_file("/run/secrets/mongo_db_user.txt")
     mongo_password: str | None = _read_secret_file("/run/secrets/mongo_db_password.txt")
 
+    oogle_client_id: str | None = os.environ.get("GOOGLE_OAUTH_CLIENT_ID")
+
+    jwt_secret: str | None = _read_secret_file("/run/secrets/jwt_secret.txt")
+    jwt_expire_minutes: int = int(os.environ.get("JWT_EXPIRE_MINUTES", "720"))
+
     @property
     def mongo_uri(self) -> str:
         if self.mongo_user and self.mongo_password:
