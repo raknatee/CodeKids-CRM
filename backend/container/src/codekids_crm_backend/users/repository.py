@@ -48,6 +48,16 @@ class UserRepository:
     def get_by_email(self, email: str) -> UserOut | None:
         return self._collection.find_one({"email": email}, projection=_EXCLUDE_ID)
 
+    def list(self, skip: int = 0, limit: int = 20) -> tuple[int, list[UserOut]]:
+        total = self._collection.count_documents({})
+        cursor = (
+            self._collection.find({}, projection=_EXCLUDE_ID)
+            .skip(skip)
+            .limit(limit)
+            .sort("email", 1)
+        )
+        return total, list(cursor)
+
     def replace(self, user_id: str, payload: UserReplace) -> UserOut:
         update_fields: dict = {**payload, "update_at": datetime.now(timezone.utc)}
 
