@@ -1,0 +1,62 @@
+info:
+  name: Delete ContactSession Endpoint
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/api/backend/contact-session?session_id=REPLACE_WITH_SESSION_ID"
+  params:
+    - name: session_id
+      value: REPLACE_WITH_SESSION_ID
+      type: query
+  auth: inherit
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 204 Response
+    description: Successful Response (No Content)
+    request:
+      url: "{{baseUrl}}/api/backend/contact-session"
+      method: DELETE
+      params:
+        - name: session_id
+          value: ""
+          type: query
+    response:
+      status: 204
+      statusText: No Content
+      body:
+        type: text
+        data: ""
+  - name: 404 Response
+    description: Not Found
+    request:
+      url: "{{baseUrl}}/api/backend/contact-session"
+      method: DELETE
+      params:
+        - name: session_id
+          value: not-exist-session-id
+          type: query
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "detail": "contact session session_id=not-exist-session-id not found"
+          }
