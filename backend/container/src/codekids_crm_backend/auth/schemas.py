@@ -2,7 +2,7 @@ from typing import TypedDict
 
 from codekids_crm_backend.users.models import Role
 
-class GoogleLoginResponse(TypedDict):
+class GoogleLoginRequest(TypedDict):
     id_token: str
 
 class TokenResponse(TypedDict):
