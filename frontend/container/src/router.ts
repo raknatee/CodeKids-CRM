@@ -6,6 +6,7 @@ const routes = [
   { path: '/login', component: ()=>import('./pages/login/index.vue')},
   { path: "/contact-session", component: ()=>import('./pages/contact-session/index.vue') },
   { path: "/customer", component: ()=>import("./pages/customer/index.vue")},
+  { path: "/customers", component: ()=>import("./pages/customers/index.vue")}
   { path: "/class-form", name: "class-form", component: ClassForm },
 ]
 
