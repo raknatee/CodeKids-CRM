@@ -1,0 +1,62 @@
+info:
+  name: Delete Customer Endpoint
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/api/backend/customer?uid=REPLACE_WITH_CUSTOMER_UID"
+  params:
+    - name: uid
+      value: REPLACE_WITH_CUSTOMER_UID
+      type: query
+  auth: inherit
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 204 Response
+    description: Successful Response (No Content)
+    request:
+      url: "{{baseUrl}}/api/backend/customer"
+      method: DELETE
+      params:
+        - name: uid
+          value: ""
+          type: query
+    response:
+      status: 204
+      statusText: No Content
+      body:
+        type: text
+        data: ""
+  - name: 404 Response
+    description: Not Found
+    request:
+      url: "{{baseUrl}}/api/backend/customer"
+      method: DELETE
+      params:
+        - name: uid
+          value: not-exist-uid
+          type: query
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "detail": "customer uid=not-exist-uid not found"
+          }

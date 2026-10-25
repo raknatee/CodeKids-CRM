@@ -24,10 +24,13 @@ services:
       - traefik.http.routers.backend.entrypoints=web
       - traefik.http.services.backend.loadbalancer.server.port=8000
 
+    environment:
+      - GOOGLE_OAUTH_CLIENT_ID=${GOOGLE_OAUTH_CLIENT_ID}
 
     secrets:
       - mongo_db_user.txt
       - mongo_db_password.txt
+      - jwt_secret.txt
     #   - email_app_password.json
 
 
