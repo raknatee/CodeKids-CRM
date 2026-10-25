@@ -19,3 +19,8 @@ class ContactType(StrEnum):
     INBOUND_ADS = "INBOUND_ADS"
     INBOUND_ORGANIC = "INBOUND_ORGANIC"
     OUTBOUND_FOLLOWUP = "OUTBOUND_FOLLOWUP"
+
+class PlatformName(StrEnum):
+    FACEBOOK = "FACEBOOK"
+    INSTAGRAM = "INSTAGRAM"
+    LINE = "LINE"

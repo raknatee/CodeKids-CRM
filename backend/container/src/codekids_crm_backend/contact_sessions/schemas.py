@@ -3,6 +3,11 @@ from typing import NotRequired, TypedDict
 
 from .model import ContactType, Requirement
 
+class Ads(TypedDict):
+    """โฆษณา 1 ตัวที่ผูกกับ contact session (embed อยู่ใน document ของ session)"""
+ 
+    ads_id: str
+    platform: PlatformName
 
 class ContactSessionCreate(TypedDict):
     """Payload POST contact session
@@ -17,6 +22,7 @@ class ContactSessionCreate(TypedDict):
     contact_type: NotRequired[ContactType | None]
     insight: NotRequired[str | None]
     session_notes: NotRequired[str | None]
+    ads: list[Ads]
 
 class ContactSessionReplace(ContactSessionCreate):
     """ใช้กับ PUT (แทนที่ข้อมูลทั้งก้อน)"""
