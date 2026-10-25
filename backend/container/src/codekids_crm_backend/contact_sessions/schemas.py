@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import NotRequired, TypedDict
 
-from .model import ContactType, Requirement
+from .model import ContactType, PlatformName, Requirement
 
 class Ads(TypedDict):
     """โฆษณา 1 ตัวที่ผูกกับ contact session (embed อยู่ใน document ของ session)"""
