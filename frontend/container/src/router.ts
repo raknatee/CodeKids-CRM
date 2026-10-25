@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-
+import ClassForm from "./pages/class-form/index.vue";
 const routes = [
   { path: '/', component: ()=>import('./pages/Home.vue') },
   { path: '/about', component: ()=>import('./pages/about.vue') },
@@ -7,6 +7,7 @@ const routes = [
   { path: "/contact-session", component: ()=>import('./pages/contact-session/index.vue') },
   { path: "/customer", component: ()=>import("./pages/customer/index.vue")},
   { path: "/customers", component: ()=>import("./pages/customers/index.vue")}
+  { path: "/class-form", name: "class-form", component: ClassForm },
 ]
 
 export const router = createRouter({
