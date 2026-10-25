@@ -2,6 +2,7 @@ from fastapi import FastAPI
 
 from codekids_crm_backend.core.app_setting import BASE_PATH
 from codekids_crm_backend.customers.routers import customer_router
+from codekids_crm_backend.contact_sessions.routers import contact_session_router
 from codekids_crm_backend.auth.routers import auth_router
 from codekids_crm_backend.users.routers import user_router
 
@@ -10,6 +11,7 @@ app = FastAPI(docs_url=BASE_PATH+'/docs',
               )
 
 app.include_router(customer_router)
+app.include_router(contact_session_router)
 app.include_router(auth_router)
 app.include_router(user_router)
 
